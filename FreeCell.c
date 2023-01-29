@@ -16,50 +16,50 @@ typedef struct stCarta{
 tCarta *Baralho = NULL; // Baralho para o jogo
 tCarta *primMesa[8] = {NULL}; // Lista de cartas na mesa
 tCarta *primNaipe[4] = {NULL}; // Monte de Naipes
-tCarta *temp[4] = {NULL}; // Posições temporarias do jogo
+tCarta *temp[4] = {NULL}; // PosiÃ§Ãµes temporarias do jogo
 tCarta *primMonte[8] = {NULL}; // Topo das listas de cartas que estao na mesa
 
-char tabuleiro[MAX][8]; // Tabuleiro para impressão do jogo
-const char simb[13] = "A23456789XJQK"; // Vetor de referência para os valores das cartas
-int pontos = 0; // Pontuação do jogador
+char tabuleiro[MAX][8]; // Tabuleiro para impressÃ£o do jogo
+const char simb[13] = "A23456789XJQK"; // Vetor de referÃªncia para os valores das cartas
+int pontos = 0; // PontuaÃ§Ã£o do jogador
 
 
-// FUNÇÕES DO JOGO //
-void jogo(); // Inicia e da sequência ao jogo
+// FUNÃ‡Ã•ES DO JOGO //
+void jogo(); // Inicia e da sequÃªncia ao jogo
 // Inicio
 void geraBaralho(); // Cria a lista de 52 cartas ordenadas do baralho
-void embaralhaBaralho(); // Embaralhamento do Baralho, trocando os valores das posições
+void embaralhaBaralho(); // Embaralhamento do Baralho, trocando os valores das posiÃ§Ãµes
 void distribuirMesa(); // Distribui o Baralho para as pilhas da mesa
 // Movimentos
-void moveMesaTemp(); // Movimento das pilhas da mesa para as posições temporarias
-void moveTempMesa(); // Movimento das posicções temporarias para as pilhas da mesa
+void moveMesaTemp(); // Movimento das pilhas da mesa para as posiÃ§Ãµes temporarias
+void moveTempMesa(); // Movimento das posicÃ§Ãµes temporarias para as pilhas da mesa
 void moveMesaNaipe(); // Movimento das pilhas da mesa para os Montes de Naipes
 void moveMesaMesa(); // Movimento entre as pilhas da mesa
-void moveTempNaipe(); // Movimento das posições temporarias para os montes de naipes
+void moveTempNaipe(); // Movimento das posiÃ§Ãµes temporarias para os montes de naipes
 void moveNaipeMesa(); // Movimento dos montes de naipes para as pilhas da mesa
-void moveNaipeTemp(); // Movimento dos montes de naipes para as posições temporarias
-// Impressão
-void imprime(); // Impressão do jogo
-void atualizaTab(); // Atualiza a Matriz de impressão
+void moveNaipeTemp(); // Movimento dos montes de naipes para as posiÃ§Ãµes temporarias
+// ImpressÃ£o
+void imprime(); // ImpressÃ£o do jogo
+void atualizaTab(); // Atualiza a Matriz de impressÃ£o
 void jogadaInvalida(); // Mensagem de jogada invalida
-// Funções auxiliares
+// FunÃ§Ãµes auxiliares
 int valida(int n, int l); // Valida coordenadas de entrada
 void apagaJogo(); // Reinicia os ponteiros do jogo
 
 
-// FUNÇÕES DE INTERAÇÃO //
+// FUNÃ‡Ã•ES DE INTERAÃ‡ÃƒO //
 void menu(); // Menu Inicial
-void opcoes(); // Opções de jogada
+void opcoes(); // OpÃ§Ãµes de jogada
 void vitoria();
 void billieJeans(int x); // Musica "Billie Jeans" com Beep
 void feelGood(int x); // Musica "Feel Good" com Beep
 
 
-// FUNÇÕES EXTRAS //
+// FUNÃ‡Ã•ES EXTRAS //
 void carregando(); // Tela de carregamento
 // Regulamento
 void regras(); // Texto com os movimentos implementados no jogo
-// Histórico de partidas
+// HistÃ³rico de partidas
 typedef struct no{
     char data[32];
     char horarioI[32];
@@ -74,7 +74,7 @@ const char nome[] = {"Jogos_Salvos.txt"};
 
 void salva(int o); // Salva o horario e a pontuacao de cada partida
 void escreveEmOrdem(Dados *no, FILE *ptr);
-void ordenaRank(); // Ordena o histórico a partir da pontuação
+void ordenaRank(); // Ordena o histÃ³rico a partir da pontuaÃ§Ã£o
 void historico(); // Acessa o arquivo salvo dos jogos
 
 
@@ -82,7 +82,7 @@ int main(){
     int op = 1;
 
     HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
-    SetConsoleTextAttribute(h, 143); // Definição da cor de texto e fundo do terminal
+    SetConsoleTextAttribute(h, 143); // DefiniÃ§Ã£o da cor de texto e fundo do terminal
 
     system("start Playlist.mp3");
 
@@ -90,8 +90,7 @@ int main(){
         menu();
         scanf("%d", &op);
 
-        Beep(550, 200); // Função para emitir sinais sonoros
-        // system("start Corcovado.mp3");
+        Beep(550, 200); // FunÃ§Ã£o para emitir sinais sonoros
 
         switch(op){
             case 1:
@@ -207,7 +206,7 @@ void embaralhaBaralho(){
     int i, c1, c2;
     tCarta *ct1, *ct2, *aux, *apaga;
 
-    // Gera duas posições aleatorias do baralho e trocam seus valores
+    // Gera duas posiÃ§Ãµes aleatorias do baralho e trocam seus valores
     srand(time(NULL));
     for(i=0; i<100; i++){ // 100 trocas de cartas
         c1 = rand()%52;
@@ -247,7 +246,7 @@ void distribuirMesa(){
         if(j==8) j=0;
 
         carta = Baralho; // Carta que esta no topo do baralho
-        Baralho = Baralho->prox; // Remoção do topo
+        Baralho = Baralho->prox; // RemoÃ§Ã£o do topo
 
         atual = primMesa[j];
         aux = NULL;
@@ -260,10 +259,10 @@ void distribuirMesa(){
 
         carta->prox = atual;
         carta->ant = aux;
-        primMonte[j] = carta; // Ponteiro para carta que está no "topo" de uma pilha, a ultima carta da lista
+        primMonte[j] = carta; // Ponteiro para carta que estÃ¡ no "topo" de uma pilha, a ultima carta da lista
         j++; // Troca de Pilha
 
-        atualizaTab(); // Impressão repetitiva do jogo a cada carta que é distribuida
+        atualizaTab(); // ImpressÃ£o repetitiva do jogo a cada carta que Ã© distribuida
         imprime();
 
         billieJeans(x);
@@ -280,10 +279,10 @@ void moveMesaTemp(){
 
     if(valida(m, 7) && valida(t, 3) && primMonte[m] != NULL && temp[t] == NULL){
 
-        temp[t] = primMonte[m]; // Atualiza a posição temporaria
+        temp[t] = primMonte[m]; // Atualiza a posiÃ§Ã£o temporaria
 
         primMonte[m] = primMonte[m]->ant; // Atualizando o ponteiro para o "topo" da pilha
-        if(primMonte[m]==NULL) primMesa[m] = NULL; // Remoção da ultima carta da pilha
+        if(primMonte[m]==NULL) primMesa[m] = NULL; // RemoÃ§Ã£o da ultima carta da pilha
         else primMonte[m]->prox = NULL;
 
         printf("[%d/%c] - Carta movida", temp[t]->numero, temp[t]->naipe);
@@ -299,7 +298,7 @@ void moveTempMesa(){
     printf("Temporario(0-3), Pilha(0-7): ");
     scanf("%d%d", &t, &m);
 
-    if(valida(t, 3) && valida(m, 7) && temp[t] != NULL &&// Validação das coordenadas
+    if(valida(t, 3) && valida(m, 7) && temp[t] != NULL &&// ValidaÃ§Ã£o das coordenadas
       (primMonte[m] == NULL || (temp[t]->cor != primMonte[m]->cor && temp[t]->numero == primMonte[m]->numero-1))){ // A pilha esta vazia ou possui uma carta de cor diferente e maior valor
 
             atual = primMonte[m];
@@ -313,7 +312,7 @@ void moveTempMesa(){
                 primMonte[m] = primMonte[m]->prox;
                 primMonte[m]->ant = atual;
             }
-            temp[t] = NULL; // Atualizando a posição temporaria
+            temp[t] = NULL; // Atualizando a posiÃ§Ã£o temporaria
 
             printf("[%d/%c] - Carta movida", primMonte[m]->numero, primMonte[m]->naipe);
             Beep(550, 200);
@@ -328,7 +327,7 @@ void moveMesaNaipe(){
     printf("Pilha(0-7), Naipe(0-3): ");
     scanf("%d%d", &m, &n);
 
-    if(valida(m, 7) && valida(n, 3) && primMonte[m] != NULL && primMonte[m]->naipe == (n+3) && // A carta existe e o naipe de inserseção esta correto
+    if(valida(m, 7) && valida(n, 3) && primMonte[m] != NULL && primMonte[m]->naipe == (n+3) && // A carta existe e o naipe de inserseÃ§Ã£o esta correto
      ((primNaipe[n] == NULL && primMonte[m]->numero == 1) || // Primeira carta do monte
       (primNaipe[n] != NULL && primMonte[m]->numero == primNaipe[n]->numero+1))){ // Demais cartas do monte
 
@@ -338,7 +337,7 @@ void moveMesaNaipe(){
                 primNaipe[n] = primMonte[m]; // Movendo a carta para o monte de naipes
 
                 primMonte[m] = aux; // Atualizando o ponteiro para o "topo" da pilha
-                if(primMonte[m] == NULL) primMesa[m] = NULL; // Remoção da ultima carta da pilha
+                if(primMonte[m] == NULL) primMesa[m] = NULL; // RemoÃ§Ã£o da ultima carta da pilha
                 else primMonte[m]->prox = NULL;
 
                 printf("[%d/%c] - Carta movida", primNaipe[n]->numero, primNaipe[n]->naipe);
@@ -356,7 +355,7 @@ void moveMesaMesa(){
     scanf("%d%d%d", &i, &j, &n);
 
     if(valida(i, 7) && valida(j, 7) && i!=j) aux = primMonte[i]; // Ponteiro para carta inicial da pilha a ser movida
-    if(aux != NULL) auxant = aux->ant; // Ponteiro para carta anterior que ficará na pilha incial
+    if(aux != NULL) auxant = aux->ant; // Ponteiro para carta anterior que ficarÃ¡ na pilha incial
 
     while(auxant != NULL && n>1){ // Verifica se o bloco esta ordenado
         if(aux->ant->numero != aux->numero+1 || aux->ant->cor == aux->cor) break;
@@ -369,9 +368,9 @@ void moveMesaMesa(){
 
     // As cartas a serem movidas existem, o bloco a ser movido esta ordenado e existe na pilha
     if(aux != NULL && n==1 &&
-      (primMesa[j] == NULL || (primMonte[j]->numero == aux->numero+1 && primMonte[j]->cor != aux->cor))){ // A posição a ser inserida é valida
+      (primMesa[j] == NULL || (primMonte[j]->numero == aux->numero+1 && primMonte[j]->cor != aux->cor))){ // A posiÃ§Ã£o a ser inserida Ã© valida
 
-        if(primMesa[j] == NULL){ // Lista vazia, na posição a ser inserida
+        if(primMesa[j] == NULL){ // Lista vazia, na posiÃ§Ã£o a ser inserida
             primMesa[j] = aux; // Nova primeira carta da lista
             primMonte[j] = primMonte[i];
             primMesa[j]->ant = NULL;
@@ -382,7 +381,7 @@ void moveMesaMesa(){
         }
 
         primMonte[i] = auxant; // Atualizando o ponteiro para o "topo"
-        if(primMonte[i] == NULL) primMesa[i] = NULL; // Remoção da ultima carta da pilha
+        if(primMonte[i] == NULL) primMesa[i] = NULL; // RemoÃ§Ã£o da ultima carta da pilha
         else primMonte[i]->prox = NULL;
 
         printf("[%d/%c] : [%d/%c] Cartas movidas", aux->numero, aux->naipe, primMonte[j]->numero, primMonte[j]->naipe);
@@ -397,7 +396,7 @@ void moveTempNaipe(){
     printf("Temp(0-3), Naipe(0-3): ");
     scanf("%d%d", &i, &j);
 
-    if(valida(i, 3) && valida(j, 3) && temp[i] != NULL && temp[i]->naipe == (j+3) && // A carta existe e o naipe de inserseção esta correto
+    if(valida(i, 3) && valida(j, 3) && temp[i] != NULL && temp[i]->naipe == (j+3) && // A carta existe e o naipe de inserseÃ§Ã£o esta correto
       ((primNaipe[j] == NULL && temp[i]->numero == 1) || // Primeira carta do monte
       (primNaipe[j] != NULL && temp[i]->numero == primNaipe[j]->numero+1))){ // Demais cartas do monte
 
@@ -420,12 +419,12 @@ void moveNaipeMesa(){
     printf("Naipe(0-3), Mesa(0-7): ");
     scanf("%d%d", &i, &j);
 
-    // As coordenadas são validas, a carta existe, e a pilha da mesa está vazia ou segue a ordem das cartas
+    // As coordenadas sÃ£o validas, a carta existe, e a pilha da mesa estÃ¡ vazia ou segue a ordem das cartas
     if(valida(i, 3) && valida(j, 7) && primNaipe[i] != NULL &&
       (primMesa[j] == NULL || (primMonte[j] != NULL && primMonte[j]->numero == primNaipe[i]->numero+1 && primMonte[j]->cor != primNaipe[i]->cor))){
 
         atual = primMonte[j];
-        if(primMesa[j]==NULL){ // Lista vazia, na posição a ser inserida
+        if(primMesa[j]==NULL){ // Lista vazia, na posiÃ§Ã£o a ser inserida
             primMesa[j] = primNaipe[i];
             primMonte[j] = primMesa[j];
             primMonte[j]->ant = NULL;
@@ -450,7 +449,7 @@ void moveNaipeTemp(){
     printf("Naipe(0-3), Temp(0-3): ");
     scanf("%d%d", &i, &j);
 
-    // As coordenadas são validas, a carta existe e o temporario esta vazio
+    // As coordenadas sÃ£o validas, a carta existe e o temporario esta vazio
     if(valida(i, 3) && valida(j, 3) && primNaipe[i] != NULL && temp[j] == NULL){
 
         temp[j] = primNaipe[i];
@@ -466,13 +465,13 @@ void moveNaipeTemp(){
 void imprime(){
     int i, j, v=1, m; // Variaveis de controle de indices
     int k[8], l, c, s; // Contadores e flags
-    tCarta *atual; // Ponteiro auxiliar para impressão das cores
+    tCarta *atual; // Ponteiro auxiliar para impressÃ£o das cores
 
-    HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE); // Ferramenta de configuração de cores
+    HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
 
-    system("cls"); // Comando para limpar o terminal
+    system("cls");
 
-    // Cabeçalho
+    // CabeÃ§alho
     printf("\n\t  Temporario          %c            Monte      \n   ", 184);
 
     // Temporario e Monte//
@@ -481,7 +480,7 @@ void imprime(){
             if(j < 4) atual = temp[j];
             else atual = primNaipe[j-4];
 
-            if(atual != NULL){ // Definição de cores a serem impressas
+            if(atual != NULL){ // DefiniÃ§Ã£o de cores a serem impressas
                 if(atual->cor == 0) SetConsoleTextAttribute(h, 132);
                 else                SetConsoleTextAttribute(h, 128);
             }
@@ -500,12 +499,12 @@ void imprime(){
     printf("  0     1     2     3           %c     %c     %c     %c\n    ", 3,4,5,6);
 
     for (m = 0; m < 8; m++) k[m] = -1; // Indicador de cor
-    l = c = s = 0; // Contadores para partes de impressão
+    l = c = s = 0; // Contadores para partes de impressÃ£o
 
     // Mesa //
     for (i = 3; i < MAX; i += v){
         for (j = 0; j < 8; j++){
-            if((tabuleiro[i][j]==3 || tabuleiro[i][j]==4) || k[j]==0){ // Definição de cores a serem impressas
+            if((tabuleiro[i][j]==3 || tabuleiro[i][j]==4) || k[j]==0){ // DefiniÃ§Ã£o de cores a serem impressas
                 SetConsoleTextAttribute(h, 132); // Cor vermalha
                 k[j] = 0;
             }else if((tabuleiro[i][j]==5 || tabuleiro[i][j]==6) || k[j]==1 ){
@@ -513,11 +512,11 @@ void imprime(){
                 k[j] = 1;
             }
 
-            if(j==4) printf("      "); // Espaçamento entre 4 pilhas
+            if(j==4) printf("      "); // EspaÃ§amento entre 4 pilhas
 
             if(tabuleiro[i][j] == ' '){ // Sem cartas
                 printf("      ");
-                s++; // Contador para quebra de impressão
+                s++; // Contador para quebra de impressÃ£o
                 continue;
             }else if(l==0){ // Inicio da carta
                 printf("  __  ");
@@ -536,7 +535,7 @@ void imprime(){
             SetConsoleTextAttribute(h, 143);
         }
         if(s==8) break;
-        l++; // Contador para cabeçalho
+        l++; // Contador para cabeÃ§alho
         c++; // Contador para as outras partes da carta
         s=0;
         printf("\n    ");
@@ -602,7 +601,7 @@ void apagaJogo(){
     int i;
     tCarta *apaga, *atual;
 
-    // Reinicia os ponteiros para NULL e apaga as cartas que foram geradas
+    // Anula os ponteiros e desaloca as cartas que foram geradas
     pontos = 0;
     Baralho = NULL;
 
@@ -743,7 +742,7 @@ void regras(){
     HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
 
     system("cls");
-    // Descrição das regras do jogo
+    // DescriÃ§Ã£o das regras do jogo
     printf("\n\t\t\t\t%c%c%c Movimentos Validos %c%c%c\n\n", 176, 177, 178, 178, 177, 176);
     printf("\n %c MT - Movimento da carta do topo da pilha de uma das 8 mesas para uma das 4 posicoes temporarias.\n Apenas uma carta pode ser movida por vez, e a posicao temporaria deve estar vazia.\n", 250);
     printf("\n %c TM - Movimento da carta de alguma posicao temporaria para alguma das 8 pilhas da mesa.\n Apenas uma carta pode ser movida por vez, a carta a ser movida deve ser de cor diferente e \n menor valor da que se encontra na mesa.\n",250);
@@ -810,7 +809,7 @@ void salva(int o){
     FILE *ptr;
     struct tm *data;
     time_t segundos;
-    static int min, sec; // Variaveis para calculo da duração
+    static int min, sec; // Variaveis para calculo da duraÃ§Ã£o
 
     time(&segundos);
     data = localtime(&segundos);
