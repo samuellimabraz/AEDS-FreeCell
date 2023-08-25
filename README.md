@@ -1,6 +1,7 @@
 # AEDS-FreeCell
 Jogo FreeCell desenvolvido em C.
 
+![Menu](./screenshots/menu.png)
 
 
 Uma implementação do popular jogo de cartas, Free Cell, desenvolvida em C como parte do projeto da disciplina de Estrutura de Dados na Universidade Federal de Itajubá. Este projeto tem como objetivo principal a aplicação prática de estruturas dinâmicas, proporcionando uma oportunidade de aprender e praticar os conceitos de alocação dinâmica de memória, listas encadeadas e manipulação de dados.
@@ -18,6 +19,11 @@ O Free Cell é um jogo de cartas solitário que requer habilidade, estratégia e
 
 - Jogabilidade: Durante o jogo, você pode movimentar cartas entre as áreas do jogo, incluindo Mesa, Temporário e Monte de Naipe. Assim como, desistir da partida atual.
 
+## Screenshots
+
+![Jogo](./screenshots/inicio_jogo.png)
+
+![Regras](./screenshots/regras.png)
 
 ## License
 
