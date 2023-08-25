@@ -19,6 +19,22 @@ O Free Cell é um jogo de cartas solitário que requer habilidade, estratégia e
 
 - Jogabilidade: Durante o jogo, você pode movimentar cartas entre as áreas do jogo, incluindo Mesa, Temporário e Monte de Naipe. Assim como, desistir da partida atual.
 
+# Compilação e Execução
+Para compilar e executar o jogo, siga estas etapas:
+
+1. Abra um terminal e navegue até o diretório do projeto.
+  ```c++
+  cd AEDS-FreeCell/src
+  ```
+2. Compile o código-fonte usando um compilador C (por exemplo, GCC) com o seguinte comando:
+  ```c++
+  gcc main.c freecell.c resources.c -o main  
+  ```
+3. Execute o arquivo executável gerado:
+  ```c++
+  .\main.exe
+  ```
+
 ## Screenshots
 
 ![Jogo](./screenshots/inicio_jogo.png)
